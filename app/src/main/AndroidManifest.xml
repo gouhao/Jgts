@@ -1,0 +1,31 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.xdja.jwt.jgts">
+
+    <application android:icon="@mipmap/ic_launcher"
+                 android:label="@string/app_name"
+                android:theme="@style/AppTheme">
+        <activity android:name=".module.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".pn.PushMsgReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.xdja.push.MESSAGE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".pn.ClickMsgHandlerReceiver">
+            <intent-filter>
+                <action android:name="com.xdja.sp.handler.message"></action>
+            </intent-filter>
+
+        </receiver>
+    </application>
+
+</manifest>

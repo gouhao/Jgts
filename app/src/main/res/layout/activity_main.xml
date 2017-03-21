@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="com.xdja.jwt.jgts.module.main.MainActivityData"/>
+        <import type="com.xdja.jwt.jgts.module.main.MainActivityModel"/>
+        <variable
+            name="data"
+            type="MainActivityData"/>
+
+        <variable
+            name="model"
+            type="MainActivityModel"/>
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+    </LinearLayout>
+</layout>
