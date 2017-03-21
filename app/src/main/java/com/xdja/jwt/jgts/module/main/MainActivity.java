@@ -1,5 +1,7 @@
 package com.xdja.jwt.jgts.module.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +15,11 @@ import com.xdja.jwt.jgts.databinding.ActivityMainBinding;
  */
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainActivityModel, MainActivityData> {
+
+    public static void startActivity(Context context) {
+        context.startActivity(new Intent(context, MainActivity.class));
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
