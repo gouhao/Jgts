@@ -25,4 +25,5 @@ dependencies {
     compile rootProject.ext.dependencies["support-v7"]
     compile project(path: ':framebase')
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    testCompile 'junit:junit:4.12'
 }
