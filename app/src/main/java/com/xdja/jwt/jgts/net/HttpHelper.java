@@ -4,9 +4,13 @@ import android.text.TextUtils;
 
 import com.gouhao.frame.base.LogUtil;
 
+import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.TreeSet;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -19,6 +23,7 @@ public class HttpHelper {
     private static String TAG = "HttpHelper";
 
     private static final int MAX_THREAD_COUNT = 3;
+    private static final long DEFAULT_TIME_OUT = 20;
     private static HttpHelper ourInstance = new HttpHelper();
 
     private OkHttpClient okHttpClient;
@@ -28,7 +33,11 @@ public class HttpHelper {
     }
 
     private HttpHelper() {
-        okHttpClient = new OkHttpClient();
+        okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
+                .writeTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
+                .readTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
+                .build();
     }
 
     public void get(String url, Map<String, String> header, Map<String, String> data, Callback callback) {
