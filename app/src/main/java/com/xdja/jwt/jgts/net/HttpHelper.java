@@ -6,8 +6,6 @@ import com.gouhao.frame.base.LogUtil;
 
 import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -25,36 +23,28 @@ public class HttpHelper {
 
     private OkHttpClient okHttpClient;
 
-    private ExecutorService threadPool;
-
     public static HttpHelper getInstance() {
         return ourInstance;
     }
 
     private HttpHelper() {
         okHttpClient = new OkHttpClient();
-        threadPool = Executors.newFixedThreadPool(MAX_THREAD_COUNT);
-    }
-
-    public void getAsync(final String url, final Map<String, String> header, final Map<String, String> data, final Callback callback) {
-        threadPool.execute(new Runnable() {
-            @Override
-            public void run() {
-                get(url, header, data, callback);
-            }
-        });
     }
 
     public void get(String url, Map<String, String> header, Map<String, String> data, Callback callback) {
         LogUtil.i(TAG, "url=" + url + ", header=" + header + ", data=" + data);
-        if (url == null || TextUtils.isEmpty(url)) {
+        if (TextUtils.isEmpty(url)) {
             throw new IllegalArgumentException("url is null");
         }
         Request.Builder builder = new Request.Builder();
-        addHeader(header, builder);
+        if(header != null) {
+            addHeader(header, builder);
+        }
 
         if (data != null && !data.isEmpty()) {
             addGetData(url, data, builder);
+        } else {
+            builder.url(url);
         }
 
         Request request = builder.build();
@@ -73,18 +63,9 @@ public class HttpHelper {
         builder.url(sb.toString());
     }
 
-    public void postAsync(final String url, final Map<String, String> header, final Map<String, String> data, final Callback callback) {
-        threadPool.execute(new Runnable() {
-            @Override
-            public void run() {
-                post(url, header, data, callback);
-            }
-        });
-    }
-
     public void post(String url, Map<String, String> header, Map<String, String> data, Callback callback) {
         LogUtil.i(TAG, "url=" + url + ", header=" + header + ", data=" + data);
-        if (url == null || TextUtils.isEmpty(url)) {
+        if (TextUtils.isEmpty(url)) {
             throw new IllegalArgumentException("url is null");
         }
         Request.Builder builder = new Request.Builder();

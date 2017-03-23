@@ -10,7 +10,7 @@ import org.junit.Test;
  * Created by gouhao on 3/21/2017.
  */
 
-public class TestFlag {
+public class FlagTest {
     private Flag flag;
 
     private static final int INDEX_TEST1 = 0;

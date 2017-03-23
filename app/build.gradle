@@ -9,6 +9,8 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -19,11 +21,18 @@ android {
     dataBinding {
         enabled = true
     }
+    packagingOptions {
+        exclude "LICENSE.txt"
+    }
 }
 
 dependencies {
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
     compile rootProject.ext.dependencies["support-v7"]
     compile project(path: ':framebase')
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
     testCompile 'junit:junit:4.12'
+
 }
