@@ -8,9 +8,6 @@ import com.gouhao.frame.base.LogUtil;
 import com.xdja.jwt.jgts.module.main.MainActivity;
 import com.xdja.jwt.jgts.net.HttpHelper;
 
-import junit.textui.TestRunner;
-
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

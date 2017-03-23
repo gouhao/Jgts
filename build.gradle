@@ -1,6 +1,8 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url "http://120.194.4.142:9999/nexus/content/repositories/hysyb-release/" }
+        maven { url 'https://raw.githubusercontent.com/jarlen/maven-repo/master/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
@@ -10,6 +12,8 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url "http://120.194.4.142:9999/nexus/content/repositories/hysyb-release/" }
+        maven { url 'https://raw.githubusercontent.com/jarlen/maven-repo/master/' }
     }
 }
 
