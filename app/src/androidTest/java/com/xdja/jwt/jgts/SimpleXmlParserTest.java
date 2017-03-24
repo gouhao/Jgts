@@ -18,7 +18,6 @@ import java.io.ByteArrayInputStream;
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class SimpleXmlParserTest {
-
     /**
      * 测试空字符串
      */

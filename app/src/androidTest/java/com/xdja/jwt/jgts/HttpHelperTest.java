@@ -32,11 +32,6 @@ public class HttpHelperTest {
     @Rule
     public ActivityTestRule activityTestRule = new ActivityTestRule(MainActivity.class);
 
-    @Before
-    public void setup(){
-
-    }
-
     @Test
     public void testGet(){
         HttpHelper.getInstance().get(TEST_URL, null, null, new Callback() {
