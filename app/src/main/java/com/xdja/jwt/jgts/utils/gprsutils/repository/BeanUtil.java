@@ -3,7 +3,7 @@ package com.xdja.jwt.jgts.utils.gprsutils.repository;
 
 import android.text.TextUtils;
 
-import com.gouhao.frame.base.LogUtil;
+import com.gouhao.frame.utils.LogUtil;
 import com.xdja.jwt.jgts.utils.gprsutils.entity.Pagination;
 
 import java.lang.reflect.Field;

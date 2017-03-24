@@ -1,8 +1,10 @@
-package com.gouhao.frame.base;
+package com.gouhao.frame.view;
 
 import android.content.Context;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import com.gouhao.frame.view.ITitleBar;
 
 /**
  * Created by gouhao on 2017/2/4 0004.

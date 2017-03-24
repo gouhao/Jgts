@@ -1,6 +1,6 @@
 package com.xdja.jwt.jgts.module.main;
 
-import com.gouhao.frame.base.BasePresenter;
+import com.gouhao.frame.activity.BasePresenter;
 
 /**
  * Created by gouhao on 3/24/2017.

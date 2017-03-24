@@ -4,7 +4,7 @@ import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.gouhao.frame.base.LogUtil;
+import com.gouhao.frame.utils.LogUtil;
 import com.xdja.jwt.jgts.module.main.MainActivity;
 import com.xdja.jwt.jgts.net.HttpHelper;
 

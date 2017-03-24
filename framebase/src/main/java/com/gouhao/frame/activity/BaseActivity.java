@@ -1,4 +1,4 @@
-package com.gouhao.frame.base;
+package com.gouhao.frame.activity;
 
 import android.databinding.ViewDataBinding;
 import android.graphics.Color;
@@ -9,6 +9,10 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.gouhao.frame.view.ActivityLayout;
+import com.gouhao.frame.view.ITitleBar;
+import com.gouhao.frame.utils.LogUtil;
 
 /**
  * Created by gouhao on 2017/2/3 0003.

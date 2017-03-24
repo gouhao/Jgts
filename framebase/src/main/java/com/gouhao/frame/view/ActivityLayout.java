@@ -1,10 +1,12 @@
-package com.gouhao.frame.base;
+package com.gouhao.frame.view;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.LinearLayout;
+
+import com.gouhao.frame.view.ITitleBar;
+import com.gouhao.frame.view.TitleBarView;
 
 /**
  * Created by gouhao on 2017/2/3 0003.

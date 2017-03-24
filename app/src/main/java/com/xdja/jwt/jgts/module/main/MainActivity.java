@@ -3,10 +3,8 @@ package com.xdja.jwt.jgts.module.main;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 
-import com.gouhao.frame.base.BaseActivity;
+import com.gouhao.frame.activity.BaseActivity;
 import com.xdja.jwt.jgts.R;
 import com.xdja.jwt.jgts.databinding.ActivityMainBinding;
 

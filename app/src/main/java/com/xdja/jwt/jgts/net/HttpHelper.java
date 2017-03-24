@@ -2,15 +2,12 @@ package com.xdja.jwt.jgts.net;
 
 import android.text.TextUtils;
 
-import com.gouhao.frame.base.LogUtil;
+import com.gouhao.frame.utils.LogUtil;
 
-import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Cache;
 import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;

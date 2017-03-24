@@ -1,6 +1,6 @@
 package com.xdja.jwt.jgts.utils.gprsutils;
 
-import com.gouhao.frame.base.LogUtil;
+import com.gouhao.frame.utils.LogUtil;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;

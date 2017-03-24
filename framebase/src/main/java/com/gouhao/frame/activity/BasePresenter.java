@@ -1,10 +1,10 @@
-package com.gouhao.frame.base;
+package com.gouhao.frame.activity;
 
 /**
  * Created by gouhao on 3/24/2017.
  */
 
-public abstract class BasePresenter<D extends ActivityData> implements ActivityModel.Callback, IPresenter{
+public abstract class BasePresenter<D extends ActivityData> implements ActivityModel.Callback, IPresenter {
     protected String TAG = this.getClass().getSimpleName();
     protected D activityData;
 

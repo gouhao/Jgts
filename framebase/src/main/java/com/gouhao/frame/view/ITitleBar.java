@@ -1,4 +1,4 @@
-package com.gouhao.frame.base;
+package com.gouhao.frame.view;
 
 import android.view.View;
 

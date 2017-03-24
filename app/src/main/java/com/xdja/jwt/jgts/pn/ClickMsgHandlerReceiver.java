@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.gouhao.frame.base.LogUtil;
+import com.gouhao.frame.utils.LogUtil;
 
 /**
  * Created by xdjaxa on 2016/11/22.

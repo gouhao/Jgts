@@ -1,4 +1,4 @@
-package com.gouhao.frame.base;
+package com.gouhao.frame.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -18,7 +18,7 @@ import android.widget.TextView;
  * Created by gouhao on 2016-02-19.
  * 自定义的标题栏
  */
-public class TitleBarView extends RelativeLayout implements ITitleBar{
+public class TitleBarView extends RelativeLayout implements ITitleBar {
 	public final static int ID_LEFT = 1992;
 	public final static int ID_TITLE = 1993;
 
