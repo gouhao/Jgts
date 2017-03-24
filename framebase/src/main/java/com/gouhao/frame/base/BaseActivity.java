@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,13 +13,13 @@ import android.view.WindowManager;
 /**
  * Created by gouhao on 2017/2/3 0003.
  */
-public abstract class BaseActivity<V extends ViewDataBinding, M extends ActivityModel<V>, D extends ActivityData>
+public abstract class BaseActivity<V extends ViewDataBinding, D extends ActivityData, P extends BasePresenter<D>>
         extends FragmentActivity {
     protected String TAG = getClass().getSimpleName();
     private ActivityLayout activityLayout;
 
     protected V activityDataBinding;
-    protected M activityModel;
+    protected P activityPresenter;
     protected D activityData;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,11 +38,11 @@ public abstract class BaseActivity<V extends ViewDataBinding, M extends Activity
         addContentView(activityDataBinding.getRoot());
 
         initActivityData();
-        initActivityModel();
+        initActivityPresenter();
         initTitle();
     }
 
-    protected abstract void initActivityModel();
+    protected abstract void initActivityPresenter();
 
     protected abstract void initActivityData();
 
@@ -106,6 +105,4 @@ public abstract class BaseActivity<V extends ViewDataBinding, M extends Activity
         LogUtil.d(TAG, "onDestroy");
         super.onDestroy();
     }
-
-
 }

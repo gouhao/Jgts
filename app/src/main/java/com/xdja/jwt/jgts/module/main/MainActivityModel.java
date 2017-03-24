@@ -7,8 +7,5 @@ import com.xdja.jwt.jgts.databinding.ActivityMainBinding;
  * Created by gouhao on 3/21/2017.
  */
 
-public class MainActivityModel extends ActivityModel<ActivityMainBinding> {
-    public MainActivityModel(ActivityMainBinding dataBinding) {
-        super(dataBinding);
-    }
+public class MainActivityModel extends ActivityModel {
 }

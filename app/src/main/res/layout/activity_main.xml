@@ -2,14 +2,14 @@
 <layout>
     <data>
         <import type="com.xdja.jwt.jgts.module.main.MainActivityData"/>
-        <import type="com.xdja.jwt.jgts.module.main.MainActivityModel"/>
+        <import type="com.xdja.jwt.jgts.module.main.MainActivityPresenter"/>
         <variable
             name="data"
             type="MainActivityData"/>
 
         <variable
-            name="model"
-            type="MainActivityModel"/>
+            name="presenter"
+            type="MainActivityPresenter"/>
     </data>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:orientation="vertical"

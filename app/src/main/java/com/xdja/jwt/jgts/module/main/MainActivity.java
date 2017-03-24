@@ -14,21 +14,16 @@ import com.xdja.jwt.jgts.databinding.ActivityMainBinding;
  * Created by gouhao on 3/21/2017.
  */
 
-public class MainActivity extends BaseActivity<ActivityMainBinding, MainActivityModel, MainActivityData> {
+public class MainActivity extends BaseActivity<ActivityMainBinding, MainActivityData, MainActivityPresenter> {
 
     public static void startActivity(Context context) {
         context.startActivity(new Intent(context, MainActivity.class));
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    protected void initActivityModel() {
-        activityModel = new MainActivityModel(activityDataBinding);
-        activityDataBinding.setModel(activityModel);
+    protected void initActivityPresenter() {
+         activityPresenter = new MainActivityPresenter(activityData);
+        activityDataBinding.setPresenter(activityPresenter);
     }
 
     @Override
