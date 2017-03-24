@@ -71,12 +71,6 @@ public class BeanUtil {
         }
         return result;
     }
-    //////////////////////////sync end
-
-    /*
-    * 目前只支持String和基本数字类型
-    * 字段命名保持跟列名一样，去掉c_，忽略大小写
-    * */
     private static <T> T setValue(Class<T> clz, LinkedHashMap<String, String> fieldMap) throws Exception {
         T instance = clz.newInstance();
         Field[] fields = clz.getDeclaredFields();
