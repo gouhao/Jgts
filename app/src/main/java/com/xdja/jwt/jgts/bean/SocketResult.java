@@ -1,35 +1,41 @@
 package com.xdja.jwt.jgts.bean;
 
+import com.xdja.jwt.jgts.annotation.XmlField;
+
 /**
  * Created by gouhao on 3/24/2017.
  */
 
 public class SocketResult {
     private int appcode;
-    private String databuffer;
-    private int resultlist;
 
-    public int getAppcode() {
+    @XmlField(name = "databuffer")
+    private String dataBuffer;
+
+    @XmlField(name = "resultlist")
+    private int resultList;
+
+    public int getAppCode() {
         return appcode;
     }
 
-    public void setAppcode(int appcode) {
-        this.appcode = appcode;
+    public void setAppCode(int appCode) {
+        this.appcode = appCode;
     }
 
-    public String getDatabuffer() {
-        return databuffer;
+    public String getDataBuffer() {
+        return dataBuffer;
     }
 
-    public void setDatabuffer(String databuffer) {
-        this.databuffer = databuffer;
+    public void setDataBuffer(String dataBuffer) {
+        this.dataBuffer = dataBuffer;
     }
 
-    public int getResultlist() {
-        return resultlist;
+    public int getResultList() {
+        return resultList;
     }
 
-    public void setResultlist(int resultlist) {
-        this.resultlist = resultlist;
+    public void setResultList(int resultList) {
+        this.resultList = resultList;
     }
 }

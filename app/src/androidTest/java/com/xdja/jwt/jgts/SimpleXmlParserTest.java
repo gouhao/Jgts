@@ -4,9 +4,11 @@ import android.support.test.filters.LargeTest;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.xdja.jwt.jgts.bean.SocketResult;
-import com.xdja.jwt.jgts.utils.gprsutils.SimpleXmlParser;
+import com.xdja.jwt.jgts.bean.SocketResultXmlParserAdapter;
+import com.xdja.jwt.jgts.utils.gprsutils.parser.SimpleXmlParser;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -26,9 +28,9 @@ public class SimpleXmlParserTest {
         String xml = "";
         SocketResult result = (SocketResult) SimpleXmlParser.parse(xml, SocketResult.class);
         Assert.assertNotNull(result);
-        Assert.assertEquals(0, result.getAppcode());
-        Assert.assertEquals(null, result.getDatabuffer());
-        Assert.assertEquals(0, result.getResultlist());
+        Assert.assertEquals(0, result.getAppCode());
+        Assert.assertEquals(null, result.getDataBuffer());
+        Assert.assertEquals(0, result.getResultList());
     }
 
     /**
@@ -39,9 +41,9 @@ public class SimpleXmlParserTest {
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
         SocketResult result = (SocketResult) SimpleXmlParser.parse(xml, SocketResult.class);
         Assert.assertNotNull(result);
-        Assert.assertEquals(0, result.getAppcode());
-        Assert.assertEquals(null, result.getDatabuffer());
-        Assert.assertEquals(0, result.getResultlist());
+        Assert.assertEquals(0, result.getAppCode());
+        Assert.assertEquals(null, result.getDataBuffer());
+        Assert.assertEquals(0, result.getResultList());
     }
 
     /**
@@ -52,9 +54,9 @@ public class SimpleXmlParserTest {
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><result><appcode>1</appcode><databuffer>1234567sdfsdfsdfsdfsdfsdfsdf</databuffer><resultlist>123</resultlist></result>";
         SocketResult result = (SocketResult) SimpleXmlParser.parse(xml, SocketResult.class);
         Assert.assertNotNull(result);
-        Assert.assertEquals(1, result.getAppcode());
-        Assert.assertEquals("1234567sdfsdfsdfsdfsdfsdfsdf", result.getDatabuffer());
-        Assert.assertEquals(123, result.getResultlist());
+        Assert.assertEquals(1, result.getAppCode());
+        Assert.assertEquals("1234567sdfsdfsdfsdfsdfsdfsdf", result.getDataBuffer());
+        Assert.assertEquals(123, result.getResultList());
     }
 
     /**
@@ -65,9 +67,9 @@ public class SimpleXmlParserTest {
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><result><appcode>1</appcode><databuffer>1234567sdfsdfsdfsdfsdfsdfsdf</databuffer><resultlist>123</resultlist><test>fuck</test></result>";
         SocketResult result = (SocketResult) SimpleXmlParser.parse(xml, SocketResult.class);
         Assert.assertNotNull(result);
-        Assert.assertEquals(1, result.getAppcode());
-        Assert.assertEquals("1234567sdfsdfsdfsdfsdfsdfsdf", result.getDatabuffer());
-        Assert.assertEquals(123, result.getResultlist());
+        Assert.assertEquals(1, result.getAppCode());
+        Assert.assertEquals("1234567sdfsdfsdfsdfsdfsdfsdf", result.getDataBuffer());
+        Assert.assertEquals(123, result.getResultList());
     }
 
     /**
@@ -78,17 +80,29 @@ public class SimpleXmlParserTest {
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><result><appcode>1</appcode><databuffer>1234567sdfsdfsdfsdfsdfsdfsdf</databuffer><resultlist>123</resultlist><test>fuck</test></result>";
         SocketResult result = (SocketResult) SimpleXmlParser.parse(new ByteArrayInputStream(xml.getBytes()), SocketResult.class);
         Assert.assertNotNull(result);
-        Assert.assertEquals(1, result.getAppcode());
-        Assert.assertEquals("1234567sdfsdfsdfsdfsdfsdfsdf", result.getDatabuffer());
-        Assert.assertEquals(123, result.getResultlist());
+        Assert.assertEquals(1, result.getAppCode());
+        Assert.assertEquals("1234567sdfsdfsdfsdfsdfsdfsdf", result.getDataBuffer());
+        Assert.assertEquals(123, result.getResultList());
     }
 
     /**
      * 测试解析类型解析错误，用例中的appcode是String类型，但类成员需要的是int型
      */
+    @Test
+    @Ignore
     public void testParseErrorXml(){
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><result><appcode>1sdfsd</appcode><databuffer>1234567sdfsdfsdfsdfsdfsdfsdf</databuffer><resultlist>123</resultlist><test>fuck</test></result>";
         SocketResult result = (SocketResult) SimpleXmlParser.parse(new ByteArrayInputStream(xml.getBytes()), SocketResult.class);
         Assert.assertNull(result);
+    }
+
+    @Test
+    public void testParseWithAdapter(){
+        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><result><appcode>1</appcode><databuffer>1234567sdfsdfsdfsdfsdfsdfsdf</databuffer><resultlist>123</resultlist><test>fuck</test></result>";
+        SocketResult result = SimpleXmlParser.parse(new ByteArrayInputStream(xml.getBytes()), new SocketResultXmlParserAdapter());
+        Assert.assertNotNull(result);
+        Assert.assertEquals(1, result.getAppCode());
+        Assert.assertEquals("1234567sdfsdfsdfsdfsdfsdfsdf", result.getDataBuffer());
+        Assert.assertEquals(123, result.getResultList());
     }
 }
