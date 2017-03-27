@@ -1,7 +1,6 @@
-package com.xdja.jwt.jgts.utils.gprsutils.parser;
+package com.xdja.jwt.jgts.utils.xml;
 
 import com.gouhao.frame.utils.LogUtil;
-import com.xdja.jwt.jgts.annotation.XmlField;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -89,7 +88,7 @@ public class SimpleXmlParser {
                                             field.set(o, Integer.parseInt(tagText));
                                         } else if(filedString.equals("float") || filedString.equals("double")){
                                             field.set(o, Float.parseFloat(tagText));
-                                        } else if(field.equals("boolean")){
+                                        } else if(filedString.equals("boolean")){
                                             field.set(o, Boolean.parseBoolean(tagText));
                                         }
                                     }

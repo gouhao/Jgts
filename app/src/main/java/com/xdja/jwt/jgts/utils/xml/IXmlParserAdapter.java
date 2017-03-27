@@ -1,4 +1,4 @@
-package com.xdja.jwt.jgts.utils.gprsutils.parser;
+package com.xdja.jwt.jgts.utils.xml;
 
 /**
  * Created by gouhao on 3/24/2017.

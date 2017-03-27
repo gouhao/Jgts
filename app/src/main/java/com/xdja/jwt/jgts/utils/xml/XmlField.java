@@ -1,4 +1,4 @@
-package com.xdja.jwt.jgts.annotation;
+package com.xdja.jwt.jgts.utils.xml;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

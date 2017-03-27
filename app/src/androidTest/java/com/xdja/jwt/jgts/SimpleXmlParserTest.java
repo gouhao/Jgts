@@ -5,7 +5,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.xdja.jwt.jgts.bean.SocketResult;
 import com.xdja.jwt.jgts.bean.SocketResultXmlParserAdapter;
-import com.xdja.jwt.jgts.utils.gprsutils.parser.SimpleXmlParser;
+import com.xdja.jwt.jgts.utils.xml.SimpleXmlParser;
 
 import org.junit.Assert;
 import org.junit.Ignore;

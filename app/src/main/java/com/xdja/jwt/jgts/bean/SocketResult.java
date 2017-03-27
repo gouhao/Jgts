@@ -1,6 +1,6 @@
 package com.xdja.jwt.jgts.bean;
 
-import com.xdja.jwt.jgts.annotation.XmlField;
+import com.xdja.jwt.jgts.utils.xml.XmlField;
 
 /**
  * Created by gouhao on 3/24/2017.
