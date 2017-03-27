@@ -85,7 +85,7 @@ public class SimpleXmlParser {
                 switch (type) {
                     case XmlPullParser.START_TAG:
                         String name = parser.getName();
-                        if(name.equals(listType)) {
+                        if(listType != null && name.equals(listType)) {
                             Class contentClass = parseBeanStack.peek().contentClass;
                             ParseBean bean = new ParseBean(contentClass, name, null, contentClass.newInstance(), null);
                             parseBeanStack.push(bean);
@@ -129,6 +129,7 @@ public class SimpleXmlParser {
                                 Object obj = p.obj;
                                 if(p.c == List.class) {
                                     p.field.set(parseBeanStack.peek().obj, p.obj);
+                                    listType = null;
                                 } else {
                                     List list = (List) parseBeanStack.peek().obj;
                                     list.add(obj);
