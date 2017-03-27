@@ -2,22 +2,30 @@ package com.xdja.jwt.jgts.bean;
 
 import com.xdja.jwt.jgts.utils.xml.XmlField;
 
+import java.util.List;
+
 /**
  * Created by gouhao on 3/27/2017.
  */
 
 public class LoginRequest {
-    @XmlField(name = "sys")
     private int system;
 
-    @XmlField(name = "ver")
     private String version;
 
-    @XmlField(name = "user")
     private String username;
 
-    @XmlField(name = "pwd")
     private String password;
+
+    private List<TestBean> testBeanList;
+
+    public List<TestBean> getTestBeanList() {
+        return testBeanList;
+    }
+
+    public void setTestBeanList(List<TestBean> testBeanList) {
+        this.testBeanList = testBeanList;
+    }
 
     public int getSystem() {
         return system;

@@ -3,6 +3,7 @@ package com.xdja.jwt.jgts;
 import android.support.test.filters.LargeTest;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.xdja.jwt.jgts.bean.LoginRequest;
 import com.xdja.jwt.jgts.bean.SocketResult;
 import com.xdja.jwt.jgts.bean.SocketResultXmlParserAdapter;
 import com.xdja.jwt.jgts.utils.xml.SimpleXmlParser;
@@ -96,6 +97,9 @@ public class SimpleXmlParserTest {
         Assert.assertNull(result);
     }
 
+    /**
+     * 测试xml解析类通过Adapter解析，不用反射
+     */
     @Test
     public void testParseWithAdapter(){
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><result><appcode>1</appcode><databuffer>1234567sdfsdfsdfsdfsdfsdfsdf</databuffer><resultlist>123</resultlist><test>fuck</test></result>";
@@ -104,5 +108,14 @@ public class SimpleXmlParserTest {
         Assert.assertEquals(1, result.getAppCode());
         Assert.assertEquals("1234567sdfsdfsdfsdfsdfsdfsdf", result.getDataBuffer());
         Assert.assertEquals(123, result.getResultList());
+    }
+
+    @Test
+    public void testParseListXml(){
+        String xml = "<?xml version='1.0' encoding='UTF-8' standalone='no' ?><login><password>gouhao</password>" +
+                "<testBeanList><TestBean><haha>testBean 1</haha></TestBean><TestBean><haha>testBean 2</haha></TestBean><TestBean><haha>testBean 3</haha></TestBean></testBeanList>" +
+                "<username>gouhao</username><version>1.0</version><system>1</system></login>";
+        LoginRequest result = (LoginRequest) SimpleXmlParser.parse(xml, LoginRequest.class);
+        Assert.assertNotNull(result);
     }
 }
