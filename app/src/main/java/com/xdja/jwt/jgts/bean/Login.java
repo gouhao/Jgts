@@ -1,14 +1,12 @@
 package com.xdja.jwt.jgts.bean;
 
-import com.xdja.jwt.jgts.utils.xml.XmlField;
-
 import java.util.List;
 
 /**
  * Created by gouhao on 3/27/2017.
  */
 
-public class LoginRequest {
+public class Login {
     private int system;
 
     private String version;
