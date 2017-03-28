@@ -3,6 +3,7 @@ package com.xdja.jwt.jgts;
 import android.support.test.filters.LargeTest;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.xdja.jwt.jgts.bean.CommonResponse;
 import com.xdja.jwt.jgts.bean.Login;
 import com.xdja.jwt.jgts.bean.SocketResult;
 import com.xdja.jwt.jgts.bean.SocketResultXmlParserAdapter;
@@ -110,6 +111,9 @@ public class SimpleXmlParserTest {
         Assert.assertEquals(123, result.getResultList());
     }
 
+    /**
+     * 测试解析List
+     */
     @Test
     public void testParseListXml(){
         String xml = "<?xml version='1.0' encoding='UTF-8' standalone='no' ?><login><password>gouhao</password>" +
@@ -117,5 +121,15 @@ public class SimpleXmlParserTest {
                 "<username>gouhao</username><version>1.0</version><system>1</system></login>";
         Login result = (Login) SimpleXmlParser.parse(xml, Login.class);
         Assert.assertNotNull(result);
+    }
+
+    @Test
+    public void testParseCommonResponse(){
+        String xml = "<?xml version='1.0' encoding='UTF-8' standalone='no' ?><appcode>1</appcode><databuffer>haha</databuffer><resultlist><session>1234654654654</session></resultlist>";
+        CommonResponse response = (CommonResponse) SimpleXmlParser.parse(xml, CommonResponse.class);
+        Assert.assertNotNull(response);
+        Assert.assertEquals("1234654654654", response.getSession());
+        Assert.assertEquals("1", response.getAppcode());
+        Assert.assertEquals("haha", response.getDatabuffer());
     }
 }

@@ -175,6 +175,7 @@ public class SimpleXmlParser {
 
     public static Field findFieldByName(Class c, String name){
         Field[] fields = c.getDeclaredFields();
+
         for(Field f : fields) {
             XmlField xmlField = f.getAnnotation(XmlField.class);
             if(xmlField != null) {
@@ -182,6 +183,9 @@ public class SimpleXmlParser {
             } else {
                 if(f.getName().equals(name)) return f;
             }
+        }
+        if(c.getSuperclass() != Object.class) {
+            return findFieldByName(c.getSuperclass(), name);
         }
         return null;
     }
