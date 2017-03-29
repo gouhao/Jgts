@@ -1,10 +1,12 @@
 package com.xdja.jwt.jgts;
 
+import com.xdja.jwt.jgts.bean.CommonResponse;
 import com.xdja.jwt.jgts.bean.Login;
 import com.xdja.jwt.jgts.bean.TestBean;
 import com.xdja.jwt.jgts.utils.xml.SimpleXmlSerializer;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -54,31 +56,48 @@ public class SimpleSmlSerializerTest {
         Assert.assertNotNull(result);
     }
 
+    /**
+     * 测试序列化实例为null
+     */
     @Test
     public void testBeanNull(){
         String result = SimpleXmlSerializer.serializer(null, Login.class, "login");
         Assert.assertNull(result);
     }
 
+    /**
+     * 测试序列化class为null
+     */
     @Test
     public void testClassNull(){
         String result = SimpleXmlSerializer.serializer(new Login(), null, "login");
         Assert.assertNull(result);
     }
 
+    /**
+     * 测试序列化root为null
+     */
     @Test
     public void testRootNull(){
         String result = SimpleXmlSerializer.serializer(new Login(), Login.class, null);
         Assert.assertNull(result);
     }
 
+    /**
+     * 测试全部参数都为null
+     */
     @Test
     public void testAllNull(){
         String result = SimpleXmlSerializer.serializer(null, null, null);
         Assert.assertNull(result);
     }
 
+    /**
+     * 测试注解
+     * 这个需要在类上加XmlField注解，仅在测试的时候试了一下，要想测试这条用例，自己写个类加注解测试
+     */
     @Test
+    @Ignore
     public void testAnnotation(){
         Login loginRequest = new Login();
         loginRequest.setSystem(1);
@@ -94,6 +113,9 @@ public class SimpleSmlSerializerTest {
         Assert.assertTrue(isFind(result, "<pwd>gouhao</pwd>"));
     }
 
+    /**
+     * 测试序列化列表
+     */
     @Test
     public void testParseList(){
         Login loginRequest = new Login();
@@ -116,5 +138,23 @@ public class SimpleSmlSerializerTest {
         Assert.assertTrue(isFind(result, "<username>gouhao</username>"));
         Assert.assertTrue(isFind(result, "<password>gouhao</password>"));
         Assert.assertTrue(isFind(result, "<testBeanList>.*</testBeanList>"));
+    }
+
+    /**
+     * 测试序列化父类
+     */
+    @Test
+    public void testSerializerParent(){
+        CommonResponse commonResponse = new CommonResponse();
+        commonResponse.setAppcode("123");
+        commonResponse.setDatabuffer("data");
+        commonResponse.setEventId("456");
+        commonResponse.setSession("session");
+        String result = SimpleXmlSerializer.serializer(commonResponse, CommonResponse.class, "login");
+        Assert.assertTrue(isFind(result, "<login>.*</login>"));
+        Assert.assertTrue(isFind(result, "<appcode>123</appcode>"));
+        Assert.assertTrue(isFind(result, "<databuffer>data</databuffer>"));
+        Assert.assertTrue(isFind(result, "<eventId>456</eventId>"));
+        Assert.assertTrue(isFind(result, "<session>session</session>"));
     }
 }

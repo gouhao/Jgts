@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by gouhao on 3/27/2017.
@@ -29,8 +30,7 @@ public class SimpleXmlSerializer {
             serializer.setOutput(outputStream, "UTF-8");
             serializer.startDocument("UTF-8", false);
             serializer.startTag(null, root);
-            Field[] fields = c.getDeclaredFields();
-            setFieldTag(bean, serializer, fields);
+            setFieldTag(bean, serializer, c);
             serializer.endTag(null, root);
             serializer.endDocument();
             serializer.flush();
@@ -44,7 +44,8 @@ public class SimpleXmlSerializer {
         return null;
     }
 
-    private static void setFieldTag(Object bean, XmlSerializer serializer, Field[] fields) throws IOException, IllegalAccessException{
+    private static void setFieldTag(Object bean, XmlSerializer serializer, Class c) throws IOException, IllegalAccessException{
+        Field[] fields = c.getDeclaredFields();
         for(Field f : fields) {
             String tag = f.getName();
             XmlField annotation = f.getAnnotation(XmlField.class);
@@ -53,13 +54,10 @@ public class SimpleXmlSerializer {
             }
             setTag(bean, serializer, f, tag);
         }
-    }
-
-    private static void setFieldTag(Object bean, XmlSerializer serializer, Field[] fields, String root) throws IOException, IllegalAccessException {
-        if(bean == null) return;
-        serializer.startTag(null, root);
-        setFieldTag(bean, serializer, fields);
-        serializer.endTag(null, root);
+        Class<?> superclass = c.getSuperclass();
+        if(superclass != Object.class) {
+            setFieldTag(bean, serializer, superclass);
+        }
     }
 
     private static void setTag(Object bean, XmlSerializer serializer, Field f, String tag) throws IOException, IllegalAccessException {
@@ -84,11 +82,15 @@ public class SimpleXmlSerializer {
         } else if(filedTypeString.contains("java.util.List")) {
             ParameterizedType pt = (ParameterizedType) f.getGenericType();
             Class c = (Class) pt.getActualTypeArguments()[0];
-            Field[] fields = c.getDeclaredFields();
             List list = (List) f.get(bean);
-            for(Object o : list) {
-                setFieldTag(o, serializer, fields, c.getSimpleName());
+            if(list != null) {
+                for(Object o : list) {
+                    serializer.startTag(null, c.getSimpleName());
+                    setFieldTag(o, serializer, c);
+                    serializer.endTag(null, c.getSimpleName());
+                }
             }
+
         }
     }
 }
