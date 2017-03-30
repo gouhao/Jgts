@@ -13,6 +13,9 @@
 
         <activity android:name=".activity.main.MainActivity"/>
         <activity android:name=".activity.policemanage.PoliceManageActivity"/>
+        <activity android:name=".activity.policedeal.PoliceEventDealActivity"/>
+        <activity android:name=".activity.policequery.PoliceEventQueryActivity"/>
+        <activity android:name=".activity.policereport.PoliceEventReportActivity"/>
 
 
         <receiver

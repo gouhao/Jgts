@@ -1,4 +1,4 @@
-package com.xdja.jwt.jgts.activity.policemanage;
+package com.xdja.jwt.jgts.activity.policedeal;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,33 +6,32 @@ import android.databinding.DataBindingUtil;
 
 import com.xdja.jwt.jgts.R;
 import com.xdja.jwt.jgts.activity.base.BackNavActivity;
-import com.xdja.jwt.jgts.databinding.ActivityPoliceManageBinding;
+import com.xdja.jwt.jgts.databinding.ActivityPoliceEventDealBinding;
 
 /**
  * Created by gouhao on 3/30/2017.
  */
 
-public class PoliceManageActivity extends BackNavActivity<ActivityPoliceManageBinding,
-        PoliceManageViewData, PoliceManagePresenter> {
-
+public class PoliceEventDealActivity extends BackNavActivity<ActivityPoliceEventDealBinding, PoliceEventDealViewData, PoliceEventDealPresenter> {
     public static void openActivity(Context context) {
-        context.startActivity(new Intent(context, PoliceManageActivity.class));
+        context.startActivity(new Intent(context, PoliceEventDealActivity.class));
     }
+
     @Override
     protected void initActivityDataBinding() {
         dataBinding = DataBindingUtil.inflate(getLayoutInflater(),
-                R.layout.activity_police_manage, null, false);
+                R.layout.activity_police_event_deal, null, false);
     }
 
     @Override
     protected void initActivityData() {
-        activityViewData = new PoliceManageViewData(R.string.police_manage);
+        activityViewData = new PoliceEventDealViewData(R.string.police_event_deal);
         dataBinding.setData(activityViewData);
     }
 
     @Override
     protected void initActivityPresenter() {
-        presenter = new PoliceManagePresenter(this, activityViewData);
+        presenter = new PoliceEventDealPresenter(this, activityViewData);
         dataBinding.setPresenter(presenter);
     }
 }

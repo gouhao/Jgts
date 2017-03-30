@@ -20,6 +20,8 @@ public abstract class BackNavActivity<V extends ViewDataBinding,
     protected void initTitle() {
         ImageView imageView = createBackImageView();
         getTitleBar().addTitleBarLeftView(imageView);
+
+        getTitleBar().setTitleBarTitle(activityViewData.titleRes.get());
     }
 
     @NonNull

@@ -5,4 +5,7 @@
     <string name="task">任务</string>
     <string name="map">地图</string>
     <string name="police_manage">警情管理</string>
+    <string name="police_event_query">警情查询</string>
+    <string name="police_event_deal">警情处置</string>
+    <string name="police_event_report">警情上报</string>
 </resources>

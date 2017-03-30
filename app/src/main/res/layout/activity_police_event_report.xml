@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="com.xdja.jwt.jgts.activity.policereport.IPoliceEventReportPresenter"/>
+        <import type="com.xdja.jwt.jgts.activity.policereport.PoliceEventReportViewData"/>
+        <variable
+            name="data"
+            type="PoliceEventReportViewData"/>
+        <variable
+            name="presenter"
+            type="IPoliceEventReportPresenter"/>
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+    </LinearLayout>
+</layout>
