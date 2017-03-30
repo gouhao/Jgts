@@ -23,8 +23,6 @@ public interface ITitleBar {
 
     void setTitleColor(int color);
 
-    void setBackViewVisibility(int visibility);
-
     void setTitleTextSize(float size);
 
     void setTitlePadding(int l, int t, int r, int b);

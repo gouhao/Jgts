@@ -43,10 +43,10 @@ public class MainActivity extends BaseDataBindingActivity<ActivityMainBinding, M
     }
 
     private void initViewPager() {
+        fragments.add(new Fragment());
+        fragments.add(new Fragment());
         fragments.add(new TaskFragment());
-        fragments.add(new TaskFragment());
-        fragments.add(new TaskFragment());
-        fragments.add(new TaskFragment());
+        fragments.add(new Fragment());
         adapter = new MainViewPagerAdapter(this, fragments, getSupportFragmentManager());
         dataBinding.mainViewPage.setAdapter(adapter);
     }

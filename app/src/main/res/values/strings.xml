@@ -4,4 +4,5 @@
     <string name="collection">采集</string>
     <string name="task">任务</string>
     <string name="map">地图</string>
+    <string name="police_manage">警情管理</string>
 </resources>

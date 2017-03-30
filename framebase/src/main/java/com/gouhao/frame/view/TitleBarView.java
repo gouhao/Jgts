@@ -19,10 +19,8 @@ import android.widget.TextView;
  * 自定义的标题栏
  */
 public class TitleBarView extends RelativeLayout implements ITitleBar {
-	public final static int ID_LEFT = 1992;
 	public final static int ID_TITLE = 1993;
 
-	protected ImageView left;
 	protected TextView title;
 	protected LinearLayout rightLayout;
 	protected LayoutInflater inflater;
@@ -48,20 +46,15 @@ public class TitleBarView extends RelativeLayout implements ITitleBar {
 		tintView.setBackgroundColor(Color.RED);
 		LayoutParams params1 = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight());
 		addView(tintView, params1);
+
 		parent = new RelativeLayout(getContext());
 		parent.setBackgroundColor(Color.RED);
+
 		leftLayout = new LinearLayout(getContext());
 		leftLayout.setOrientation(LinearLayout.HORIZONTAL);
 		LayoutParams leftParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 		leftParams.addRule(ALIGN_PARENT_LEFT, TRUE);
 		leftParams.addRule(CENTER_VERTICAL, TRUE);
-
-		left = new ImageView(getContext());
-		left.setId(ID_LEFT);
-		LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-				ViewGroup.LayoutParams.WRAP_CONTENT);
-		params.addRule(CENTER_VERTICAL, TRUE);
-		leftLayout.addView(left, params);
 		parent.addView(leftLayout, leftParams);
 
 		title = new TextView(getContext());
@@ -93,18 +86,6 @@ public class TitleBarView extends RelativeLayout implements ITitleBar {
 			return getResources().getDimensionPixelSize(resId);
 		}
 		return 0;
-	}
-
-	public void setLeftIcon(int resId) {
-		left.setImageResource(resId);
-	}
-
-	public void setLeftIcon(Bitmap bm) {
-		left.setImageBitmap(bm);
-	}
-
-	public void setLeftClickListener(OnClickListener listener) {
-		left.setOnClickListener(listener);
 	}
 
 	@Override
@@ -145,11 +126,6 @@ public class TitleBarView extends RelativeLayout implements ITitleBar {
 	@Override
 	public void setTitleColor(int color) {
 		title.setTextColor(color);
-	}
-
-	@Override
-	public void setBackViewVisibility(int visibility) {
-		left.setVisibility(visibility);
 	}
 
 	@Override

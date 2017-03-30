@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="com.xdja.jwt.jgts.activity.policemanage.PoliceManageViewData"/>
+        <import type="com.xdja.jwt.jgts.activity.policemanage.IPoliceManagePresenter"/>
+        <variable
+            name="data"
+            type="PoliceManageViewData"/>
+        <variable
+            name="presenter"
+            type="IPoliceManagePresenter"/>
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+    </LinearLayout>
+</layout>

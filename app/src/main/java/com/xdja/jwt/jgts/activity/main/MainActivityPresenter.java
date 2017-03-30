@@ -1,5 +1,7 @@
 package com.xdja.jwt.jgts.activity.main;
 
+import android.content.Context;
+
 import com.gouhao.frame.presenter.BasePresenter;
 
 /**
@@ -7,8 +9,8 @@ import com.gouhao.frame.presenter.BasePresenter;
  */
 
 public class MainActivityPresenter extends BasePresenter<MainViewData> {
-    public MainActivityPresenter(MainViewData data) {
-        super(data);
+    public MainActivityPresenter(Context context, MainViewData data) {
+        super(context, data);
     }
 
     @Override

@@ -8,13 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gouhao.frame.data.ViewData;
-import com.gouhao.frame.presenter.BasePresenter;
+import com.gouhao.frame.presenter.IPresenter;
 
 /**
  * Created by gouhao on 3/30/2017.
  */
 
-public abstract class BaseDataBindingFragment<V extends ViewDataBinding, D extends ViewData, P extends BasePresenter<D>>
+public abstract class BaseDataBindingFragment<V extends ViewDataBinding, D extends ViewData, P extends IPresenter>
     extends BaseFragment{
 
     protected V dataBinding;

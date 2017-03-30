@@ -56,11 +56,6 @@ public class CustomToolbar extends Toolbar implements ITitleBar {
     }
 
     @Override
-    public void setBackViewVisibility(int visibility) {
-
-    }
-
-    @Override
     public void setTitleTextSize(float size) {
 
     }

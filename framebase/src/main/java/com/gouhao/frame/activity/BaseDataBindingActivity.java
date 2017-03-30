@@ -10,7 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.gouhao.frame.data.ActivityViewData;
-import com.gouhao.frame.presenter.BasePresenter;
+import com.gouhao.frame.presenter.IPresenter;
 import com.gouhao.frame.view.ActivityLayout;
 import com.gouhao.frame.view.ITitleBar;
 import com.gouhao.frame.utils.LogUtil;
@@ -18,7 +18,7 @@ import com.gouhao.frame.utils.LogUtil;
 /**
  * Created by gouhao on 2017/2/3 0003.
  */
-public abstract class BaseDataBindingActivity<V extends ViewDataBinding, D extends ActivityViewData, P extends BasePresenter<D>>
+public abstract class BaseDataBindingActivity<V extends ViewDataBinding, D extends ActivityViewData, P extends IPresenter>
         extends BaseActivity {
     private ActivityLayout activityLayout;
     protected V dataBinding;

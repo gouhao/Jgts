@@ -5,4 +5,5 @@ package com.xdja.jwt.jgts.fragment.task;
  */
 
 public interface ITaskPresenter {
+    void openPoliceEventManageActivity();
 }

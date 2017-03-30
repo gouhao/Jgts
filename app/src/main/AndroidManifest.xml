@@ -10,7 +10,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity android:name=".activity.main.MainActivity"/>
+        <activity android:name=".activity.policemanage.PoliceManageActivity"/>
+
+
         <receiver
             android:name=".pn.PushMsgReceiver"
             android:enabled="true"

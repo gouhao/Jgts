@@ -32,8 +32,6 @@ public class ActivityLayout extends LinearLayout{
     }
 
     private void initView() {
-        if(titleBar instanceof TitleBarView) {
-        }
         LinearLayout.LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 titleBarHeight);
         addView((View) titleBar, params);
@@ -48,4 +46,6 @@ public class ActivityLayout extends LinearLayout{
     public ITitleBar getTitleBar() {
         return titleBar;
     }
+
+
 }
