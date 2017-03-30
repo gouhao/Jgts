@@ -27,7 +27,7 @@ public class PluginMainClass extends Application implements JwtPluginInterface {
 	 */
 	@Override
 	public String getDesciption() {
-		return "MainActivity";
+		return "TaskActivity";
 	}
 
 	/**

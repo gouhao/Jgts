@@ -1,4 +1,4 @@
-package com.xdja.jwt.jgts.module.splash;
+package com.xdja.jwt.jgts.activity.splash;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.WindowManager;
 
 import com.xdja.jwt.jgts.R;
-import com.xdja.jwt.jgts.module.main.MainActivity;
+import com.xdja.jwt.jgts.activity.main.MainActivity;
 
 /**
  * Created by gouhao on 3/21/2017.

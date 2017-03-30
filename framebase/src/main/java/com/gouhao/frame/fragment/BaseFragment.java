@@ -1,6 +1,6 @@
-package com.gouhao.frame.activity;
+package com.gouhao.frame.fragment;
 
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 
 import com.gouhao.frame.utils.LogUtil;
 
@@ -8,40 +8,36 @@ import com.gouhao.frame.utils.LogUtil;
  * Created by gouhao on 3/30/2017.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseFragment extends Fragment {
     protected String TAG = getClass().getSimpleName();
+
+
     @Override
-    protected void onStart() {
+    public void onStart() {
         LogUtil.d(TAG, "onStart");
         super.onStart();
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         LogUtil.d(TAG, "onResume");
         super.onResume();
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         LogUtil.d(TAG, "onPause");
         super.onPause();
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         LogUtil.d(TAG, "onStop");
         super.onStop();
     }
 
     @Override
-    protected void onRestart() {
-        LogUtil.d(TAG, "onRestart");
-        super.onRestart();
-    }
-
-    @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         LogUtil.d(TAG, "onDestroy");
         super.onDestroy();
     }

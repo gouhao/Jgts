@@ -91,7 +91,6 @@ public class SimpleXmlParserTest {
      * 测试解析类型解析错误，用例中的appcode是String类型，但类成员需要的是int型
      */
     @Test
-    @Ignore
     public void testParseErrorXml(){
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><result><appcode>1sdfsd</appcode><databuffer>1234567sdfsdfsdfsdfsdfsdfsdf</databuffer><resultlist>123</resultlist><test>fuck</test></result>";
         SocketResult result = (SocketResult) SimpleXmlParser.parse(new ByteArrayInputStream(xml.getBytes()), SocketResult.class);

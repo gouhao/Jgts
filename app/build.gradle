@@ -40,4 +40,5 @@ dependencies {
     compile 'com.xdja.android:new_combox:1.0.1'
     compile 'com.xdja.android:autoupdate:1.0.2'
     compile files('libs/jsoup-1.9.2.jar')
+    compile rootProject.ext.dependencies["design"]
 }

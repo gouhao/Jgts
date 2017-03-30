@@ -1,4 +1,4 @@
-package com.gouhao.frame.activity;
+package com.gouhao.frame.model;
 
 /**
  * Created by gouhao on 2017/2/3 0003.
@@ -12,7 +12,7 @@ public abstract class ActivityModel implements IModel {
         this.callback = callback;
     }
 
-    interface Callback{
+    public interface Callback{
         void executeFinish(Object object);
     }
 }

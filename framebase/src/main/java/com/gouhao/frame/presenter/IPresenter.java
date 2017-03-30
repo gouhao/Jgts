@@ -1,4 +1,4 @@
-package com.gouhao.frame.activity;
+package com.gouhao.frame.presenter;
 
 /**
  * Created by gouhao on 3/24/2017.
