@@ -1,5 +1,7 @@
 package com.xdja.jwt.jgts.activity.policequery;
 
+import android.databinding.ObservableField;
+
 import com.gouhao.frame.data.ActivityViewData;
 
 /**
@@ -7,6 +9,7 @@ import com.gouhao.frame.data.ActivityViewData;
  */
 
 public class PoliceEventQueryViewData extends ActivityViewData {
+    public ObservableField<String> date = new ObservableField<>();
     public PoliceEventQueryViewData(int titleRes) {
         super(titleRes);
     }

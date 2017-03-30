@@ -5,4 +5,7 @@ package com.xdja.jwt.jgts.activity.policequery;
  */
 
 public interface IPoliceEventQueryPresenter {
+    void pickDate();
+
+    void query();
 }
