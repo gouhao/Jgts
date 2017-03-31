@@ -39,6 +39,9 @@ public class PoliceEventReportActivity extends BackNavActivity<ActivityPoliceEve
         dataBinding.recyclerView.setRefreshListener(this);
         dataBinding.recyclerView.setLoadMoreListener(this);
         dataBinding.recyclerView.setFooter(getLayoutInflater().inflate(R.layout.footer_recycler, null));
+        dataBinding.recyclerView.setErrorView(getLayoutInflater().inflate(R.layout.view_recycler_error, null));
+        dataBinding.recyclerView.setEmptyView(getLayoutInflater().inflate(R.layout.view_recycler_empty, null));
+        dataBinding.recyclerView.showRecyclerView();
         createTestData();
     }
 

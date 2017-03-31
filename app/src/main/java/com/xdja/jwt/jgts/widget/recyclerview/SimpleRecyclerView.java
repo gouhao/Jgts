@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.gouhao.frame.utils.LogUtil;
@@ -17,23 +18,22 @@ import com.xdja.jwt.jgts.R;
  * Created by gouhao on 3/31/2017.
  */
 
-public class SimpleRecyclerView extends LinearLayout implements SwipeRefreshLayout.OnRefreshListener {
+public class SimpleRecyclerView extends SwipeRefreshLayout implements SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG = SimpleRecyclerView.class.getSimpleName();
     private RecyclerView recyclerView;
     private LinearLayoutManager lineLayoutManager;
-    private SwipeRefreshLayout refreshLayout;
     private SwipeRefreshLayout.OnRefreshListener refreshListener;
     private OnLoadMoreListener loadMoreListener;
-    private View footerView;
-
+    private View footerView, emptyView, errorView;
     private boolean isLoading, isRefreshing;
+    private LinearLayout contentPanel;
+
     public SimpleRecyclerView(Context context) {
         this(context, null);
     }
 
     public SimpleRecyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setOrientation(LinearLayout.VERTICAL);
         init();
     }
 
@@ -46,8 +46,8 @@ public class SimpleRecyclerView extends LinearLayout implements SwipeRefreshLayo
         recyclerView.setLayoutManager(lineLayoutManager);
         recyclerView.addItemDecoration(new ColorDecoration(Color.RED, 2) );
         recyclerView.addOnScrollListener(new ScrollListener());
-        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-        refreshLayout.setOnRefreshListener(this);
+        setOnRefreshListener(this);
+        contentPanel = (LinearLayout) findViewById(R.id.contentPanel);
     }
 
     public void setAdapter(RecyclerView.Adapter adapter) {
@@ -64,7 +64,7 @@ public class SimpleRecyclerView extends LinearLayout implements SwipeRefreshLayo
 
     public void stopRefresh(){
         isRefreshing = false;
-        refreshLayout.setRefreshing(false);
+        setRefreshing(false);
     }
 
     @Override
@@ -119,7 +119,7 @@ public class SimpleRecyclerView extends LinearLayout implements SwipeRefreshLayo
     public void setFooter(View view){
         footerView = view;
         hiddenFooter();
-        addView(footerView);
+        contentPanel.addView(footerView);
     }
 
     private void showFooter() {
@@ -142,5 +142,48 @@ public class SimpleRecyclerView extends LinearLayout implements SwipeRefreshLayo
 
     public interface OnLoadMoreListener {
         void onLoad();
+    }
+
+
+    public void setEmptyView(View emptyV) {
+        emptyView = emptyV;
+        hiddenEmptyView();
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        contentPanel.addView(emptyView, params);
+    }
+
+    public void setErrorView(View errorV) {
+        errorView = errorV;
+        hiddenErrorView();
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        contentPanel.addView(errorView, params);
+    }
+
+    public void showEmptyView() {
+        emptyView.setVisibility(VISIBLE);
+        errorView.setVisibility(GONE);
+        recyclerView.setVisibility(GONE);
+    }
+
+    public void hiddenEmptyView(){
+        emptyView.setVisibility(GONE);
+    }
+
+    public void showErrorView() {
+        errorView.setVisibility(VISIBLE);
+        emptyView.setVisibility(GONE);
+        recyclerView.setVisibility(GONE);
+    }
+
+    public void hiddenErrorView(){
+        errorView.setVisibility(GONE);
+    }
+
+    public void showRecyclerView(){
+        recyclerView.setVisibility(VISIBLE);
+        emptyView.setVisibility(GONE);
+        errorView.setVisibility(GONE);
     }
 }
