@@ -78,6 +78,7 @@ public class SimpleRecyclerView extends LinearLayout implements SwipeRefreshLayo
 
     private class ScrollListener extends OnScrollListener {
             private int scrollState;
+        private int lastDy = -1;
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             scrollState = newState;
@@ -86,29 +87,36 @@ public class SimpleRecyclerView extends LinearLayout implements SwipeRefreshLayo
             }
         }
 
-
-    }
-
-
-    public void onScrolledList(RecyclerView recyclerView) {
-        if(isRefreshing || isLoading) {
-            return;
-        }
-
-        int visibleItemCount = recyclerView.getChildCount();
-        int firstVisibleItem = lineLayoutManager.findFirstVisibleItemPosition();
-        int total = lineLayoutManager.getItemCount();
-        if(firstVisibleItem + visibleItemCount >= total) {
-            LogUtil.d(TAG, "onLoad");
-            isLoading = true;
-            if(loadMoreListener != null) {
-                loadMoreListener.onLoad();
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            if(dy != -1) {
+                lastDy = dy;
             }
-            showFooter();
+
         }
 
+        private void onScrolledList(RecyclerView recyclerView) {
+            if(isRefreshing || isLoading || lastDy <= 0) {
+                return;
+            }
+            int visibleItemCount = recyclerView.getChildCount();
+            int firstVisibleItem = lineLayoutManager.findFirstVisibleItemPosition();
+            int total = lineLayoutManager.getItemCount();
+            if(firstVisibleItem + visibleItemCount >= total) {
+                LogUtil.d(TAG, "onLoad");
+                isLoading = true;
+                if(loadMoreListener != null) {
+                    loadMoreListener.onLoad();
+                }
+                showFooter();
+            }
+
+        }
     }
-    public void addFooter(View view){
+
+
+
+    public void setFooter(View view){
         footerView = view;
         hiddenFooter();
         addView(footerView);

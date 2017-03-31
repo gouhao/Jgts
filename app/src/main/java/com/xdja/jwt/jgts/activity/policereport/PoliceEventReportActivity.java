@@ -38,7 +38,7 @@ public class PoliceEventReportActivity extends BackNavActivity<ActivityPoliceEve
         dataBinding.recyclerView.setAdapter(adapter);
         dataBinding.recyclerView.setRefreshListener(this);
         dataBinding.recyclerView.setLoadMoreListener(this);
-        dataBinding.recyclerView.addFooter(getLayoutInflater().inflate(R.layout.footer_recycler, null));
+        dataBinding.recyclerView.setFooter(getLayoutInflater().inflate(R.layout.footer_recycler, null));
         createTestData();
     }
 
@@ -61,10 +61,10 @@ public class PoliceEventReportActivity extends BackNavActivity<ActivityPoliceEve
             public void run() {
                 try {
                     Thread.sleep(2000);
-                    for(int i = 0; i < 20; i++) {
+                    for(int i = 0; i < 15; i++) {
                         Event event = new Event();
                         event.setCallTime("2012-12-12 12-12");
-                        event.setAddress("锦业路");
+                        event.setAddress("锦业路" + (i + 1));
                         dataList.add(event);
                     }
                     handler.sendEmptyMessage(WHAT_UPDATE_LIST);
