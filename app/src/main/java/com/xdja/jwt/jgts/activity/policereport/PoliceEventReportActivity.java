@@ -34,6 +34,10 @@ public class PoliceEventReportActivity extends BackNavActivity<ActivityPoliceEve
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dataList = new ArrayList<>();
+        initRecyclerView();
+    }
+
+    private void initRecyclerView() {
         adapter =  new ReportAdapter(this, dataList);
         dataBinding.recyclerView.setAdapter(adapter);
         dataBinding.recyclerView.setRefreshListener(this);
@@ -42,7 +46,6 @@ public class PoliceEventReportActivity extends BackNavActivity<ActivityPoliceEve
         dataBinding.recyclerView.setErrorView(getLayoutInflater().inflate(R.layout.view_recycler_error, null));
         dataBinding.recyclerView.setEmptyView(getLayoutInflater().inflate(R.layout.view_recycler_empty, null));
         dataBinding.recyclerView.showRecyclerView();
-        createTestData();
     }
 
     private Handler handler = new Handler() {
@@ -58,27 +61,6 @@ public class PoliceEventReportActivity extends BackNavActivity<ActivityPoliceEve
             }
         }
     };
-    private void createTestData() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(2000);
-                    for(int i = 0; i < 15; i++) {
-                        Event event = new Event();
-                        event.setCallTime("2012-12-12 12-12");
-                        event.setAddress("锦业路" + (i + 1));
-                        dataList.add(event);
-                    }
-                    handler.sendEmptyMessage(WHAT_UPDATE_LIST);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }).start();
-
-    }
 
     @Override
     protected void initActivityDataBinding() {
@@ -99,21 +81,11 @@ public class PoliceEventReportActivity extends BackNavActivity<ActivityPoliceEve
 
     @Override
     public void onRefresh() {
-        dataBinding.recyclerView.stopRefresh();
+        presenter.refresh();
     }
 
     @Override
     public void onLoad() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(2000);
-                    handler.sendEmptyMessage(WHAT_LOAD_MORE);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+        presenter.loadMore();
     }
 }

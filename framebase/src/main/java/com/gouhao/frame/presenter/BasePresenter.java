@@ -3,8 +3,6 @@ package com.gouhao.frame.presenter;
 import android.content.Context;
 import android.databinding.ViewDataBinding;
 
-import com.gouhao.frame.model.ActivityModel;
-
 /**
  * Created by gouhao on 3/24/2017.
  */

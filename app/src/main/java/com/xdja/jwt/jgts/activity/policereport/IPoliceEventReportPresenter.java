@@ -5,4 +5,9 @@ package com.xdja.jwt.jgts.activity.policereport;
  */
 
 public interface IPoliceEventReportPresenter {
+    void refresh();
+
+    void loadMore();
+
+    void startCreateEvent();
 }

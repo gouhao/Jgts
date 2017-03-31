@@ -147,7 +147,7 @@ public class SimpleRecyclerView extends SwipeRefreshLayout implements SwipeRefre
 
     public void setEmptyView(View emptyV) {
         emptyView = emptyV;
-        hiddenEmptyView();
+        emptyView.setVisibility(GONE);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         contentPanel.addView(emptyView, params);
@@ -155,7 +155,7 @@ public class SimpleRecyclerView extends SwipeRefreshLayout implements SwipeRefre
 
     public void setErrorView(View errorV) {
         errorView = errorV;
-        hiddenErrorView();
+        errorView.setVisibility(GONE);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         contentPanel.addView(errorView, params);
