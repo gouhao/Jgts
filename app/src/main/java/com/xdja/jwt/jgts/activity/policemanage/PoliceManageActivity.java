@@ -12,8 +12,7 @@ import com.xdja.jwt.jgts.databinding.ActivityPoliceManageBinding;
  * Created by gouhao on 3/30/2017.
  */
 
-public class PoliceManageActivity extends BackNavActivity<ActivityPoliceManageBinding,
-        PoliceManageViewData, PoliceManagePresenter> {
+public class PoliceManageActivity extends BackNavActivity<ActivityPoliceManageBinding,PoliceManagePresenter> implements IPoliceManageView{
 
     public static void openActivity(Context context) {
         context.startActivity(new Intent(context, PoliceManageActivity.class));
@@ -25,14 +24,14 @@ public class PoliceManageActivity extends BackNavActivity<ActivityPoliceManageBi
     }
 
     @Override
-    protected void initActivityData() {
-        activityViewData = new PoliceManageViewData(R.string.police_manage);
-        dataBinding.setData(activityViewData);
+    protected void initActivityPresenter() {
+        presenter = new PoliceManagePresenter(this, this);
+        dataBinding.setPresenter(presenter);
     }
 
     @Override
-    protected void initActivityPresenter() {
-        presenter = new PoliceManagePresenter(this, dataBinding);
-        dataBinding.setPresenter(presenter);
+    protected void initTitle() {
+        super.initTitle();
+        getTitleBar().setTitleBarTitle(R.string.police_manage);
     }
 }

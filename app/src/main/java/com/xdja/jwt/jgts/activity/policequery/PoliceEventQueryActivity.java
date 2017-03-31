@@ -12,7 +12,8 @@ import com.xdja.jwt.jgts.databinding.ActivityPoliceEventQueryBinding;
  * Created by gouhao on 3/30/2017.
  */
 
-public class PoliceEventQueryActivity extends BackNavActivity<ActivityPoliceEventQueryBinding, PoliceEventQueryViewData, PoliceEventQueryPresenter> {
+public class PoliceEventQueryActivity extends BackNavActivity<ActivityPoliceEventQueryBinding,
+        PoliceEventQueryPresenter> implements IPoliceEventQueryView{
     public static void openActivity(Context context) {
         context.startActivity(new Intent(context, PoliceEventQueryActivity.class));
     }
@@ -22,14 +23,29 @@ public class PoliceEventQueryActivity extends BackNavActivity<ActivityPoliceEven
     }
 
     @Override
-    protected void initActivityData() {
-        activityViewData = new PoliceEventQueryViewData(R.string.police_event_query);
-        dataBinding.setData(activityViewData);
+    protected void initActivityPresenter() {
+        presenter = new PoliceEventQueryPresenter(this, this);
+        dataBinding.setPresenter(presenter);
     }
 
     @Override
-    protected void initActivityPresenter() {
-        presenter = new PoliceEventQueryPresenter(this, dataBinding);
-        dataBinding.setPresenter(presenter);
+    public String getReporterName() {
+        return null;
+    }
+
+    @Override
+    public String getReporterPhone() {
+        return null;
+    }
+
+    @Override
+    public void setReportDate(String date) {
+
+    }
+
+    @Override
+    protected void initTitle() {
+        super.initTitle();
+        getTitleBar().setTitleBarTitle(R.string.police_event_query);
     }
 }

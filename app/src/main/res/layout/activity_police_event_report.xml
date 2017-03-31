@@ -2,10 +2,6 @@
 <layout>
     <data>
         <import type="com.xdja.jwt.jgts.activity.policereport.IPoliceEventReportPresenter"/>
-        <import type="com.xdja.jwt.jgts.activity.policereport.PoliceEventReportViewData"/>
-        <variable
-            name="data"
-            type="PoliceEventReportViewData"/>
         <variable
             name="presenter"
             type="IPoliceEventReportPresenter"/>

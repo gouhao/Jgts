@@ -20,7 +20,7 @@ import java.util.List;
  * Created by gouhao on 3/30/2017.
  */
 
-public class MainActivity extends BaseDataBindingActivity<ActivityMainBinding, MainViewData, MainActivityPresenter> {
+public class MainActivity extends BaseDataBindingActivity<ActivityMainBinding, MainActivityPresenter> {
 
     public static void startActivity(Context context) {
         context.startActivity(new Intent(context, MainActivity.class));
@@ -58,17 +58,12 @@ public class MainActivity extends BaseDataBindingActivity<ActivityMainBinding, M
     }
 
     @Override
-    protected void initActivityData() {
-        activityViewData = new MainViewData();
-    }
-
-    @Override
     protected void initActivityPresenter() {
 
     }
 
     @Override
     protected void initTitle() {
-        getTitleBar().setTitleBarTitle(activityViewData.titleRes.get());
+        getTitleBar().setTitleBarTitle(R.string.app_name);
     }
 }

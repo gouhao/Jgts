@@ -1,4 +1,4 @@
-package com.gouhao.frame.presenter;
+package com.gouhao.frame.mvp;
 
 import android.content.Context;
 import android.databinding.ViewDataBinding;
@@ -7,13 +7,13 @@ import android.databinding.ViewDataBinding;
  * Created by gouhao on 3/24/2017.
  */
 
-public abstract class BasePresenter<V extends ViewDataBinding> implements IPresenter {
+public abstract class BasePresenter<V extends IView> implements IPresenter {
     protected String TAG = this.getClass().getSimpleName();
-    protected V dataBinding;
+    protected V view;
     protected Context context;
 
-    public BasePresenter(Context context, V binding){
+    public BasePresenter(Context context, V view){
         this.context = context;
-        this.dataBinding = binding;
+        this.view = view;
     }
 }

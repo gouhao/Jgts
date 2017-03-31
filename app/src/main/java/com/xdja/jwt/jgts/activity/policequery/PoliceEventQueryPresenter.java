@@ -4,19 +4,18 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.gouhao.frame.presenter.BasePresenter;
+import com.gouhao.frame.mvp.BasePresenter;
 import com.xdja.jwt.jgts.R;
-import com.xdja.jwt.jgts.databinding.ActivityPoliceEventQueryBinding;
 import com.xdja.jwt.jgts.widget.DateTimePickDialog;
 
 /**
  * Created by gouhao on 3/30/2017.
  */
 
-public class PoliceEventQueryPresenter extends BasePresenter<ActivityPoliceEventQueryBinding> implements IPoliceEventQueryPresenter {
+public class PoliceEventQueryPresenter extends BasePresenter<IPoliceEventQueryView> implements IPoliceEventQueryPresenter {
         private DateTimePickDialog dialog;
-    public PoliceEventQueryPresenter(Context context, ActivityPoliceEventQueryBinding binding) {
-        super(context, binding);
+    public PoliceEventQueryPresenter(Context context, IPoliceEventQueryView view) {
+        super(context, view);
         dialog = new DateTimePickDialog(context, 1992, dateSetListener);
     }
 
@@ -27,8 +26,8 @@ public class PoliceEventQueryPresenter extends BasePresenter<ActivityPoliceEvent
 
     @Override
     public void query() {
-        String reportName = dataBinding.reporter.getText().toString();
-        String reportPhone = dataBinding.reportPhone.getText().toString();
+        String reportName = view.getReporterName();
+        String reportPhone = view.getReporterPhone();
         if(TextUtils.isEmpty(reportName) || TextUtils.isEmpty(reportPhone)) {
             Toast.makeText(context, context.getString(R.string.report_or_phone_not_empty),
                     Toast.LENGTH_SHORT).show();
@@ -50,7 +49,7 @@ public class PoliceEventQueryPresenter extends BasePresenter<ActivityPoliceEvent
             .append(hour)
             .append(":")
             .append(minute);
-            dataBinding.getData().date.set(sb.toString());
+            view.setReportDate(sb.toString());
         }
     };
 }

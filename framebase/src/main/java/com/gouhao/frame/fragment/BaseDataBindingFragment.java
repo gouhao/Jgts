@@ -7,19 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gouhao.frame.data.ViewData;
-import com.gouhao.frame.presenter.IPresenter;
+import com.gouhao.frame.mvp.IPresenter;
 
 /**
  * Created by gouhao on 3/30/2017.
  */
 
-public abstract class BaseDataBindingFragment<V extends ViewDataBinding, D extends ViewData, P extends IPresenter>
+public abstract class BaseDataBindingFragment<V extends ViewDataBinding, P extends IPresenter>
     extends BaseFragment{
 
     protected V dataBinding;
     protected P presenter;
-    protected D viewData;
 
     @Nullable
     @Override
@@ -28,15 +26,12 @@ public abstract class BaseDataBindingFragment<V extends ViewDataBinding, D exten
         if(dataBinding == null) {
             throw new NullPointerException("WHAT THE FUCK!ActivityDataBinding is null");
         }
-        initViewData();
         initPresenter();
         return dataBinding.getRoot();
     }
 
 
     protected abstract void initDataBinding();
-
-    protected abstract void initViewData();
 
     protected abstract void initPresenter();
 }

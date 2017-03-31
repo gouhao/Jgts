@@ -3,9 +3,8 @@ package com.xdja.jwt.jgts.activity.policereport;
 import android.content.Context;
 
 import com.gouhao.frame.model.BaseModel;
-import com.gouhao.frame.presenter.BasePresenter;
+import com.gouhao.frame.mvp.BasePresenter;
 import com.xdja.jwt.jgts.bean.Event;
-import com.xdja.jwt.jgts.databinding.ActivityPoliceEventReportBinding;
 import com.xdja.jwt.jgts.model.EventModel;
 
 import java.util.List;
@@ -14,10 +13,10 @@ import java.util.List;
  * Created by gouhao on 3/30/2017.
  */
 
-public class PoliceEventReportPresenter extends BasePresenter<ActivityPoliceEventReportBinding> implements IPoliceEventReportPresenter {
+public class PoliceEventReportPresenter extends BasePresenter<IPoliceEventReportView> implements IPoliceEventReportPresenter {
     private EventModel eventModel;
-    public PoliceEventReportPresenter(Context context, ActivityPoliceEventReportBinding binding) {
-        super(context, binding);
+    public PoliceEventReportPresenter(Context context, IPoliceEventReportView view) {
+        super(context, view);
         eventModel = new EventModel();
     }
 

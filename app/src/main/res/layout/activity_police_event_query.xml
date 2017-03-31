@@ -2,10 +2,6 @@
 <layout>
     <data>
         <import type="com.xdja.jwt.jgts.activity.policequery.IPoliceEventQueryPresenter"/>
-        <import type="com.xdja.jwt.jgts.activity.policequery.PoliceEventQueryViewData"/>
-        <variable
-            name="data"
-            type="PoliceEventQueryViewData"/>
         <variable
             name="presenter"
             type="IPoliceEventQueryPresenter"/>
@@ -28,8 +24,7 @@
             </TableRow>
             <TableRow style="@style/PoliceEventQueryRow">
                 <TextView style="@style/PoliceEventQueryText" android:text="@string/report_time"/>
-                <EditText style="@style/PoliceEventQueryInput" android:id="@+id/report_time"
-                    android:text="@{data.date}"/>
+                <EditText style="@style/PoliceEventQueryInput" android:id="@+id/report_time"/>
                 <Button android:text="date" android:onClick="@{()->presenter.pickDate()}"/>
             </TableRow>
 

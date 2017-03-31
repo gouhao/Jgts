@@ -10,7 +10,7 @@ import com.xdja.jwt.jgts.databinding.FragmentTaskBinding;
  * Created by gouhao on 3/30/2017.
  */
 
-public class TaskFragment extends BaseDataBindingFragment<FragmentTaskBinding, TaskViewData, TaskPresenter> {
+public class TaskFragment extends BaseDataBindingFragment<FragmentTaskBinding,TaskPresenter> implements ITaskView{
     @Override
     protected void initDataBinding() {
         dataBinding = DataBindingUtil.inflate(getActivity().getLayoutInflater(),
@@ -18,14 +18,8 @@ public class TaskFragment extends BaseDataBindingFragment<FragmentTaskBinding, T
     }
 
     @Override
-    protected void initViewData() {
-        viewData = new TaskViewData();
-        dataBinding.setData(viewData);
-    }
-
-    @Override
     protected void initPresenter() {
-        presenter = new TaskPresenter(getContext(), dataBinding);
+        presenter = new TaskPresenter(getContext(), this);
         dataBinding.setPresenter(presenter);
     }
 }

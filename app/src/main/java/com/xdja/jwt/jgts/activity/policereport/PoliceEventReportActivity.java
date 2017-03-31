@@ -21,7 +21,8 @@ import java.util.List;
  */
 
 public class PoliceEventReportActivity extends BackNavActivity<ActivityPoliceEventReportBinding,
-        PoliceEventReportViewData, PoliceEventReportPresenter> implements SwipeRefreshLayout.OnRefreshListener, SimpleRecyclerView.OnLoadMoreListener {
+        PoliceEventReportPresenter> implements SwipeRefreshLayout.OnRefreshListener,
+        SimpleRecyclerView.OnLoadMoreListener ,IPoliceEventReportView {
     public static void openActivity(Context context) {
         context.startActivity(new Intent(context, PoliceEventReportActivity.class));
     }
@@ -68,14 +69,8 @@ public class PoliceEventReportActivity extends BackNavActivity<ActivityPoliceEve
     }
 
     @Override
-    protected void initActivityData() {
-        activityViewData = new PoliceEventReportViewData(R.string.police_event_report);
-        dataBinding.setData(activityViewData);
-    }
-
-    @Override
     protected void initActivityPresenter() {
-        presenter = new PoliceEventReportPresenter(this, dataBinding);
+        presenter = new PoliceEventReportPresenter(this, this);
         dataBinding.setPresenter(presenter);
     }
 
@@ -87,5 +82,11 @@ public class PoliceEventReportActivity extends BackNavActivity<ActivityPoliceEve
     @Override
     public void onLoad() {
         presenter.loadMore();
+    }
+
+    @Override
+    protected void initTitle() {
+        super.initTitle();
+        getTitleBar().setTitleBarTitle(R.string.police_event_report);
     }
 }

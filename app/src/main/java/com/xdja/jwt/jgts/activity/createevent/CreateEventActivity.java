@@ -12,8 +12,7 @@ import com.xdja.jwt.jgts.databinding.ActivitySubmitReportBinding;
  * Created by gouhao on 3/31/2017.
  */
 
-public class CreateEventActivity extends BackNavActivity<ActivitySubmitReportBinding,
-        CreateEventActivityData, CreateEventPresenter> {
+public class CreateEventActivity extends BackNavActivity<ActivitySubmitReportBinding, CreateEventPresenter> implements ICreateEventView{
     public static void start(Context context) {
         context.startActivity(new Intent(context, CreateEventActivity.class));
     }
@@ -23,14 +22,14 @@ public class CreateEventActivity extends BackNavActivity<ActivitySubmitReportBin
     }
 
     @Override
-    protected void initActivityData() {
-        activityViewData = new CreateEventActivityData(R.string.submit_event);
-        dataBinding.setData(activityViewData);
+    protected void initActivityPresenter() {
+        presenter = new CreateEventPresenter(this, this);
+        dataBinding.setPresenter(presenter);
     }
 
     @Override
-    protected void initActivityPresenter() {
-        presenter = new CreateEventPresenter(this, dataBinding);
-        dataBinding.setPresenter(presenter);
+    protected void initTitle() {
+        super.initTitle();
+        getTitleBar().setTitleBarTitle(R.string.create_event);
     }
 }

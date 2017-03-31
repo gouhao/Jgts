@@ -6,22 +6,18 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.gouhao.frame.activity.BaseDataBindingActivity;
-import com.gouhao.frame.data.ActivityViewData;
-import com.gouhao.frame.presenter.IPresenter;
+import com.gouhao.frame.mvp.BasePresenter;
 import com.xdja.jwt.jgts.R;
 
 /**
  * Created by gouhao on 3/30/2017.
  */
 
-public abstract class BackNavActivity<V extends ViewDataBinding,
-        D extends ActivityViewData, P extends IPresenter> extends BaseDataBindingActivity<V, D, P> {
+public abstract class BackNavActivity<VD extends ViewDataBinding,P extends BasePresenter> extends BaseDataBindingActivity<VD, P> {
     @Override
     protected void initTitle() {
         ImageView imageView = createBackImageView();
         getTitleBar().addTitleBarLeftView(imageView);
-
-        getTitleBar().setTitleBarTitle(activityViewData.titleRes.get());
     }
 
     @NonNull

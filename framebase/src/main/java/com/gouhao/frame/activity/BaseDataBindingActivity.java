@@ -9,8 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.gouhao.frame.data.ActivityViewData;
-import com.gouhao.frame.presenter.IPresenter;
+import com.gouhao.frame.mvp.IPresenter;
 import com.gouhao.frame.view.ActivityLayout;
 import com.gouhao.frame.view.ITitleBar;
 import com.gouhao.frame.utils.LogUtil;
@@ -18,12 +17,11 @@ import com.gouhao.frame.utils.LogUtil;
 /**
  * Created by gouhao on 2017/2/3 0003.
  */
-public abstract class BaseDataBindingActivity<V extends ViewDataBinding, D extends ActivityViewData, P extends IPresenter>
+public abstract class BaseDataBindingActivity<VD extends ViewDataBinding, P extends IPresenter>
         extends BaseActivity {
     private ActivityLayout activityLayout;
-    protected V dataBinding;
+    protected VD dataBinding;
     protected P presenter;
-    protected D activityViewData;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         LogUtil.d(TAG, "onCreate");
@@ -40,13 +38,10 @@ public abstract class BaseDataBindingActivity<V extends ViewDataBinding, D exten
         }
         addContentView(dataBinding.getRoot());
 
-        initActivityData();
         initActivityPresenter();
         initTitle();
     }
     protected abstract void initActivityDataBinding();
-
-    protected abstract void initActivityData();
 
     protected abstract void initActivityPresenter();
 

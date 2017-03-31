@@ -12,7 +12,7 @@ import com.xdja.jwt.jgts.databinding.ActivityPoliceEventDealBinding;
  * Created by gouhao on 3/30/2017.
  */
 
-public class PoliceEventDealActivity extends BackNavActivity<ActivityPoliceEventDealBinding, PoliceEventDealViewData, PoliceEventDealPresenter> {
+public class PoliceEventDealActivity extends BackNavActivity<ActivityPoliceEventDealBinding, PoliceEventDealPresenter> implements IPoliceEventDealView{
     public static void openActivity(Context context) {
         context.startActivity(new Intent(context, PoliceEventDealActivity.class));
     }
@@ -24,14 +24,14 @@ public class PoliceEventDealActivity extends BackNavActivity<ActivityPoliceEvent
     }
 
     @Override
-    protected void initActivityData() {
-        activityViewData = new PoliceEventDealViewData(R.string.police_event_deal);
-        dataBinding.setData(activityViewData);
+    protected void initActivityPresenter() {
+        presenter = new PoliceEventDealPresenter(this, this);
+        dataBinding.setPresenter(presenter);
     }
 
     @Override
-    protected void initActivityPresenter() {
-        presenter = new PoliceEventDealPresenter(this, dataBinding);
-        dataBinding.setPresenter(presenter);
+    protected void initTitle() {
+        super.initTitle();
+        getTitleBar().setTitleBarTitle(R.string.police_event_deal);
     }
 }

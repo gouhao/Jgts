@@ -2,10 +2,6 @@
 <layout>
     <data>
         <import type="com.xdja.jwt.jgts.activity.policedeal.IPoliceEventDealPresenter"/>
-        <import type="com.xdja.jwt.jgts.activity.policedeal.PoliceEventDealViewData"/>
-        <variable
-            name="data"
-            type="PoliceEventDealViewData"/>
         <variable
             name="presenter"
             type="IPoliceEventDealPresenter"/>

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <import type="com.xdja.jwt.jgts.fragment.task.TaskViewData"/>
         <import type="com.xdja.jwt.jgts.fragment.task.ITaskPresenter"/>
-        <variable
-            name="data"
-            type="TaskViewData"/>
 
         <variable
             name="presenter"

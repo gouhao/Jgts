@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-    <!--<data>-->
-        <!--<import type="com.xdja.jwt.jgts.activity.main.MainViewData->
-        <!-<import type="com.xdja.jwt.jgts.activity.main.MainActivityPresenter"/>-->
-        <!--<variable-->
-            <!--name="data"-->
-            <!--type="MainViewData"/>-->
-        <!--<variable-->
-            <!--name="presenter"-->
-            <!--type="MainActivityPresenter"/>-->
-    <!--</data>-->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
