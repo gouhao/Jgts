@@ -6,6 +6,7 @@ package com.xdja.jwt.jgts.bean;
 
 public class Event {
     private String session;
+    private String eventId;
     private String regionId;
     private String classId;
     private String typeId;
@@ -292,5 +293,13 @@ public class Event {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
     }
 }

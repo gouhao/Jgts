@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="java.lang.String"/>
+        <variable
+            name="theme"
+            type="String"/>
+        <variable
+            name="position"
+            type="String"/>
+        <variable
+            name="date"
+            type="String"/>
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                         android:orientation="vertical"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1">
+            <TableRow>
+                <TextView style="@style/ReportItemLabelText" android:text="@string/event_theme"/>
+                <TextView style="@style/ReportItemContentText" android:text="@{theme}"/>
+            </TableRow>
+            <TableRow>
+                <TextView style="@style/ReportItemLabelText" android:text="@string/event_position"/>
+                <TextView style="@style/ReportItemContentText" android:text="@{position}"/>
+            </TableRow>
+            <TableRow>
+                <TextView style="@style/ReportItemLabelText" android:text="@string/event_time"/>
+                <TextView style="@style/ReportItemContentText" android:text="@{date}"/>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</layout>

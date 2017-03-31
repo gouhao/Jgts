@@ -25,7 +25,7 @@ public class TaskFragment extends BaseDataBindingFragment<FragmentTaskBinding, T
 
     @Override
     protected void initPresenter() {
-        presenter = new TaskPresenter(getContext(), viewData);
+        presenter = new TaskPresenter(getContext(), dataBinding);
         dataBinding.setPresenter(presenter);
     }
 }
