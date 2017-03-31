@@ -125,6 +125,7 @@ public class SimpleRecyclerView extends LinearLayout implements SwipeRefreshLayo
     private void showFooter() {
         if(footerView != null) {
             footerView.setVisibility(VISIBLE);
+            recyclerView.smoothScrollBy(0, 100);
         }
     }
 
