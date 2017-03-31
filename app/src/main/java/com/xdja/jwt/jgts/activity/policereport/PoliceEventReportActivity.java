@@ -29,7 +29,7 @@ public class PoliceEventReportActivity extends BackNavActivity<ActivityPoliceEve
 
     @Override
     protected void initActivityPresenter() {
-        presenter = new PoliceEventReportPresenter(this, activityViewData);
+        presenter = new PoliceEventReportPresenter(this, dataBinding);
         dataBinding.setPresenter(presenter);
     }
 }

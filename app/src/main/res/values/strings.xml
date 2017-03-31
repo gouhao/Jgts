@@ -19,4 +19,11 @@
     <string name="year">年</string>
     <string name="cancel">取消</string>
     <string name="ok">确定</string>
+    <string name="report_or_phone_not_empty">请输入报警人或报警电话</string>
+
+    <string-array name="police_event_type">
+        <item>120</item>
+        <item>119</item>
+        <item>110</item>
+    </string-array>
 </resources>

@@ -31,7 +31,7 @@ public class PoliceEventDealActivity extends BackNavActivity<ActivityPoliceEvent
 
     @Override
     protected void initActivityPresenter() {
-        presenter = new PoliceEventDealPresenter(this, activityViewData);
+        presenter = new PoliceEventDealPresenter(this, dataBinding);
         dataBinding.setPresenter(presenter);
     }
 }

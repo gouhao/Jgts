@@ -1,21 +1,21 @@
 package com.gouhao.frame.presenter;
 
 import android.content.Context;
+import android.databinding.ViewDataBinding;
 
-import com.gouhao.frame.data.ViewData;
 import com.gouhao.frame.model.ActivityModel;
 
 /**
  * Created by gouhao on 3/24/2017.
  */
 
-public abstract class BasePresenter<D extends ViewData> implements ActivityModel.Callback, IPresenter {
+public abstract class BasePresenter<V extends ViewDataBinding> implements IPresenter {
     protected String TAG = this.getClass().getSimpleName();
-    protected D activityData;
+    protected V dataBinding;
     protected Context context;
 
-    public BasePresenter(Context context, D data){
+    public BasePresenter(Context context, V binding){
         this.context = context;
-        this.activityData = data;
+        this.dataBinding = binding;
     }
 }

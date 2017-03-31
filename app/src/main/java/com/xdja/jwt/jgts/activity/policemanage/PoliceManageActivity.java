@@ -32,7 +32,7 @@ public class PoliceManageActivity extends BackNavActivity<ActivityPoliceManageBi
 
     @Override
     protected void initActivityPresenter() {
-        presenter = new PoliceManagePresenter(this, activityViewData);
+        presenter = new PoliceManagePresenter(this, dataBinding);
         dataBinding.setPresenter(presenter);
     }
 }

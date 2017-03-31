@@ -20,22 +20,22 @@
             android:stretchColumns="1">
             <TableRow style="@style/PoliceEventQueryRow">
                 <TextView style="@style/PoliceEventQueryText" android:text="@string/reporter"/>
-                <EditText style="@style/PoliceEventQueryInput" android:id="@+id/et_reporter" android:layout_span="2"/>
+                <EditText style="@style/PoliceEventQueryInput" android:id="@+id/reporter" android:layout_span="2"/>
             </TableRow>
             <TableRow style="@style/PoliceEventQueryRow">
                 <TextView style="@style/PoliceEventQueryText" android:text="@string/reporter_phone"/>
-                <EditText style="@style/PoliceEventQueryInput" android:id="@+id/et_report_phone" android:layout_span="2"/>
+                <EditText style="@style/PoliceEventQueryInput" android:id="@+id/report_phone" android:layout_span="2"/>
             </TableRow>
             <TableRow style="@style/PoliceEventQueryRow">
                 <TextView style="@style/PoliceEventQueryText" android:text="@string/report_time"/>
-                <EditText style="@style/PoliceEventQueryInput" android:id="@+id/et_report_time"
+                <EditText style="@style/PoliceEventQueryInput" android:id="@+id/report_time"
                     android:text="@{data.date}"/>
                 <Button android:text="date" android:onClick="@{()->presenter.pickDate()}"/>
             </TableRow>
 
             <TableRow>
                 <TextView style="@style/PoliceEventQueryText" android:text="@string/event_type"/>
-                <Spinner android:id="@+id/type_spinner"/>
+                <Spinner android:id="@+id/type_spinner" android:entries="@array/police_event_type"/>
             </TableRow>
         </TableLayout>
         <Button
